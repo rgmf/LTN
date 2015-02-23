@@ -59,6 +59,7 @@ public class CoursesAttendanceListFragment extends CoursesAbstractListFragment {
 			FragmentManager fm = getFragmentManager();
 			FragmentTransaction ft = fm.beginTransaction();
 			ft.replace(R.id.attendance_detail, AttendanceDetailFragment.newInstance(course.getId()));
+			ft.addToBackStack(null);
 			ft.commit();
 		}
 	}

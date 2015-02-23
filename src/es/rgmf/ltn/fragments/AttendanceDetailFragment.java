@@ -120,7 +120,7 @@ public class AttendanceDetailFragment extends Fragment {
 			Bundle savedInstanceState) {
 		mRootView = inflater.inflate(R.layout.fragment_attendance_detail, container, false);
 		TableLayout table = (TableLayout) mRootView.findViewById(R.id.attendance_table_layout);
-
+		
 		if(getActivity() != null) {
 			this.mContext = getActivity().getApplicationContext();
 		}
@@ -292,5 +292,10 @@ public class AttendanceDetailFragment extends Fragment {
 		}
 		
 		return mRootView;
+	}
+	
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
 	}
 }

@@ -20,7 +20,7 @@ package es.rgmf.ltn;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.MenuItem;
 import android.widget.TextView;
 import es.rgmf.ltn.fragments.StudentDetailFragment;
 import es.rgmf.ltn.fragments.StudentOptionsFragment;
@@ -131,5 +131,21 @@ public class StudentActivity extends Activity implements
 			detailIntent.putExtra(COURSE_ID, mCourseId);
 			startActivity(detailIntent);
 		}
+	}
+	
+	/**
+	 * We finish this activity when user click on "up button" because in the
+	 * default behaviour this activity would go to MainActivity that is its
+	 * parent.
+	 */
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) { 
+	        switch (item.getItemId()) {
+	        case android.R.id.home:
+	        	finish();
+	            return true;
+	        }
+
+	    return super.onOptionsItemSelected(item);
 	}
 }
