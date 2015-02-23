@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * Copyright (C) 2014 Román Ginés Martínez Ferrández <rgmf@riseup.net>
+ *
+ * This program (LibreTeacherNotebook) is free software: you can 
+ * redistribute it and/or modify it under the terms of the GNU General 
+ * Public License as published by the Free Software Foundation, either
+ * version 3 of the License, or any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+-->
+
+<resources>
+
+    <!-- Action bar text -->
+    <string name="set_evaluation">Set Evaluation</string>
+    <string name="day">Day</string>
+    <string name="week">Week</string>
+    <string name="month">Month</string>
+
+    <!-- Error messages -->
+    <string name="error_adding_concept">It cannot be able to add the concept</string>
+    <string name="error_adding_course">It cannot be able to add the course</string>
+    <string name="error_adding_evaluation">It cannot be able to add the evaluation</string>
+    <string name="error_adding_student">It cannot be able to add the student</string>
+    <string name="error_updating_exam_student_mark">It cannot be able to update the mark of this exam to the student</string>
+    <string name="error_adding_procedure">It cannot be able to add the procedure</string>
+    <string name="error_updating_practice_student_mark">It cannot be able to update the mark of this practice to the student</string>
+    <string name="error_adding_attitude">It cannot be able to add attitude</string>
+    <string name="error_deleting_concept">It cannot be able to delete concept</string>
+    <string name="error_deleting_procedure">It cannot be able to delete procedure</string>
+    <string name="error_deleting_attitude">It cannot be able to delete attitude</string>
+    <string name="error_updating_attitude">It cannot be able to update attitude</string>
+    <string name="error_loading_image">It cannot be abel to load image</string>
+    <string name="error_not_null">This field cannot be empty</string>
+    <string name="error_sum_percentages">The sum of percentages must be 100%</string>
+    <string name="error_updating_student">It cannot be able to update student</string>
+    <string name="error_selecting_item">There was an weird error when selecting item. You should contact with developers.</string>
+
+    <!-- Info messages -->
+    <string name="msg_changes_done">Changes done</string>
+
+    <!-- Hints to inputs -->
+    <string name="mark_input_hint">Insert the mark</string>
+    <string name="optional_comment_input_hint">Insert an optional comment</string>
+    <string name="select_an_attitude_input_hint">Select an attitude or create a new one...</string>
+    <string name="there_are_not_student_in_this_course">There are not students enrolled in this course</string>
+    <string name="select_the_date_hint">Select a date</string>
+
+    <!-- Generics -->
+    <string name="from">from</string>
+    <string name="to">to</string>
+    <string name="photo_hint">Photo</string>
+
+    <!-- Dialogs messages -->
+    <string name="concept_delete_message">Do you really want to delete the concept? This action cannot be undo and you will not be able to create this concept for this student once again.</string>
+    <string name="procedure_delete_message">Do you really want to delete the procedure? This action cannot be undo and you will not be able to create this procedure for this student once again.</string>
+    <string name="attitude_delete_message">Do you really want to delete the attitude?</string>
+
+    <!-- Context menu messages -->
+    <string name="change_info">Change information...</string>
+    <string name="delete_this">Delete only this...</string>
+    <string name="same_mark_for_all_students">Same mark for all students...</string>
+
+    <!-- Buttons text -->
+    <string name="add_button_hint">Add</string>
+    <string name="cancel_button_hint">Cancel</string>
+    <string name="update_button_hint">Update</string>
+    <string name="change_button_hint">Change</string>
+    <string name="delete_button_hint">Delete</string>
+    <string name="home_marks_text_tab">Home</string>
+    <string name="concept_marks_text_tab">Concepts</string>
+    <string name="procedure_marks_text_tab">Procedures</string>
+    <string name="attitude_marks_text_tab">Attitude</string>
+    <string name="app_name">LibreTeacherNotebook</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_home_section">Summary</string>
+    <string name="course_capital_letter_hint">COURSE</string>
+    <string name="student_capital_letter_hint">STUDENT</string>
+    <string name="evaluation_capital_letter_hint">EVALUATION</string>
+    <string name="attendance_capital_letter_hint">ATTENDANCE</string>
+    <string name="course_management">Course Management</string>
+    <string name="action_add_course">Add Course</string>
+    <string name="course_id_hint">Identifier</string>
+    <string name="course_level_hint">Level</string>
+    <string name="course_name_hint">Name</string>
+    <string name="course_group_hint">Group</string>
+    <string name="course_tutor_hint">Tutor</string>
+    <string name="course_detail_hint">Select a course on the left list</string>
+    <string name="course_detail_title">Course detail</string>
+    <string name="there_are_not_courses">There are not courses. You can create one clicking on button above.</string>
+    <string name="course_delete_message">Are you sure do you like to delete the course?</string>
+    <string name="course_update_ok">The course has been updated</string>
+    <string name="student_id_hint">Identifier</string>
+    <string name="student_name_hint">Name</string>
+    <string name="student_lastname_hint">Lastname</string>
+    <string name="student_delete_message">Are you sure do you like to delete the student?</string>
+    <string name="no_student_title_hint">There are not student enrolled in this course</string>
+    <string name="no_student_info_hint">You can create students enrolled in this course clicking in the new student button image that you can see below</string>
+    <string name="evaluation_management">Evaluation Management</string>
+    <string name="evaluation_id_hint">Identifier</string>
+    <string name="evaluation_startdate_hint">Start Date</string>
+    <string name="evaluation_enddate_hint">End Date</string>
+    <string name="evaluation_name_hint">Name</string>
+    <string name="evaluation_detail_hint">Select an evaluation on the left list</string>
+    <string name="evaluation_detail_title">Evaluation detail</string>
+    <string name="evaluation_delete_message">Are you sure do you like to delete the evaluation?</string>
+    <string name="evaluation_update_ok">The evaluation has been updated</string>
+    <string name="there_are_not_evaluations">There are not evaluations. You can create one clicking on button above.</string>
+    <string name="attendance_management">Attendance Management</string>
+    <string name="attendance_table_title">Classroom attendance</string>
+    <string name="student_title_table">Student</string>
+    <string name="the_fields">The fields</string>
+    <string name="are_required">are required</string>
+    <string name="course_student_hello_message">Here you can be able to see student information but you have to create evaluations, courses and students before</string>
+    <string name="not_evaluation_message">You have to create evaluations from Home section and select one of them above, in the action bar.</string>
+    <string name="set_mark">Set a mark</string>
+    <string name="course_name_help">Insert here the name</string>
+    <string name="course_level_help">Insert here the level</string>
+    <string name="course_group_help">Insert here the group</string>
+    <string name="course_tutor_help">Insert here the tutor</string>
+    <string name="course_weightes_hint">Percentages</string>
+    <string name="course_concepts_percentage">Concepts percentage</string>
+    <string name="course_procedures_percentage">Procedures percentage</string>
+    <string name="course_attitudes_percentage">Attitudes percentage</string>
+    <string name="concept_date_hint">Test Date</string>
+    <string name="concept_name_hint">Test Name</string>
+    <string name="concept_description_hint">Test Description</string>
+    <string name="concept_weight_hint">Test Weight (real value between 0 and 1)</string>
+    <string name="procedure_start_date_hint">Test Start Date</string>
+    <string name="procedure_end_date_hint">Test End Date</string>
+    <string name="procedure_name_hint">Test Name</string>
+    <string name="procedure_description_hint">Test Description</string>
+    <string name="procedure_weight_hint">Test Weight (real value between 0 and 1)</string>
+    <string name="attitude_date_hint">Attitude Date</string>
+    <string name="attitude_name_hint">Attitude Name</string>
+    <string name="attitude_description_hint">Attitude Description</string>
+    <string name="attitude_weight_hint">Attitude Weight (real value between 0 and 1)</string>
+    <string name="concept_average_mark">Concepts average mark</string>
+    <string name="procedure_average_mark">Procedures average mark</string>
+    <string name="attitude_average_mark">Attitudes average mark</string>
+    <string name="total_mark_hint">Total mark</string>
+    <string name="title_student_list">Students</string>
+    <string name="title_student_detail">Student Detail</string>
+    <string name="personal_data">Personal data</string>
+    <string name="attendance">Attendance</string>
+    <string name="no_data">There are not data from this student</string>
+
+</resources>

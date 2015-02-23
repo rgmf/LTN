@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * Copyright (C) 2014 Román Ginés Martínez Ferrández <rgmf@riseup.net>
+ *
+ * This program (LibreTeacherNotebook) is free software: you can 
+ * redistribute it and/or modify it under the terms of the GNU General 
+ * Public License as published by the Free Software Foundation, either
+ * version 3 of the License, or any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+ -->
+
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/add_course"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <!-- THE FORM WITH AN SCROLL -->
+    <ScrollView 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:paddingBottom="55dp">
+    
+		<RelativeLayout 
+	        android:layout_width="fill_parent" 
+	        android:layout_height="wrap_content">
+	    
+		    <!-- PHOTO -->
+		    <ImageView
+		        android:id="@+id/student_photo_input"
+		        android:layout_width="@android:dimen/thumbnail_width"
+		        android:layout_height="@android:dimen/thumbnail_height"
+		        android:padding="20dp"
+		        android:src="@drawable/ic_new_user"
+		        android:contentDescription="@string/photo_hint"
+		        android:layout_alignParentRight="true" />
+		    
+		    <!-- NAME -->
+			<TextView
+		        android:id="@+id/student_name_text"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:text="@string/student_name_hint"
+		        android:textSize="@dimen/text_size_large"
+		        android:layout_below="@id/student_photo_input" />
+		       
+		    <EditText 
+		        android:id="@+id/student_name_input"
+		        android:inputType="textCapWords"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:textSize="@dimen/text_size_large"
+		        android:singleLine="true"
+		        android:layout_below="@id/student_name_text"
+                android:selectAllOnFocus="true" />
+		   
+		    <!-- LASTNAME -->	        
+			<TextView
+		        android:id="@+id/student_lastname_text"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:text="@string/student_lastname_hint"
+		        android:textSize="@dimen/text_size_large"
+		        android:layout_below="@id/student_name_input" />
+		       
+		    <EditText 
+		        android:id="@+id/student_lastname_input"
+		        android:inputType="textCapWords"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:textSize="@dimen/text_size_large"
+		        android:singleLine="true"
+		        android:layout_below="@id/student_lastname_text"
+                android:selectAllOnFocus="true" />
+	    
+	    </RelativeLayout>
+    
+	</ScrollView>
+    
+    <!-- BUTTON BAR -->
+    <RelativeLayout
+        android:id="@+id/footer_student_detail" 
+        android:layout_width="fill_parent" 
+        android:layout_height="50dp"
+	    android:layout_alignParentBottom="true"
+	    style="@style/LtbBarButton">
+	    
+        <ImageView
+	        android:id="@+id/cancel_student_button"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/ic_cancel_dark_light"
+	        android:layout_alignParentLeft="true"
+	        android:paddingLeft="20dp" />
+        
+	    <ImageView
+	        android:id="@+id/add_student_button"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/ic_ok_dark_light"
+	        android:layout_alignParentRight="true"
+	        android:paddingRight="20dp" />
+    
+	</RelativeLayout>
+    
+</RelativeLayout>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * Copyright (C) 2014 Román Ginés Martínez Ferrández <rgmf@riseup.net>
+ *
+ * This program (LibreTeacherNotebook) is free software: you can 
+ * redistribute it and/or modify it under the terms of the GNU General 
+ * Public License as published by the Free Software Foundation, either
+ * version 3 of the License, or any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+ -->
+
+<ScrollView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ScrollView01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+<RelativeLayout
+    android:id="@+id/add_attitude"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp" >
+    
+    <!-- DATE -->
+	<TextView
+        android:id="@+id/attitude_date_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/attitude_date_hint"
+        android:textSize="22sp" />
+       
+    <DatePicker 
+        android:id="@+id/attitude_date_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:singleLine="true"
+        android:layout_below="@id/attitude_date_text" />
+   
+    <LinearLayout
+ 		android:id="@+id/spinner_aa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/attitude_date_input">    
+        
+        <!-- SPINNER WITH ALL ATTITUDE TO CHOSE -->
+	    <Spinner 
+	        android:id="@+id/all_attitude_spinner"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:prompt="@string/select_an_attitude_input_hint"
+	        android:spinnerMode="dropdown" />
+	</LinearLayout>
+	    
+    <LinearLayout 
+ 		android:id="@+id/name_description_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/spinner_aa">
+        
+	    <!-- NAME -->
+		<TextView
+	        android:id="@+id/attitude_name_text"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/attitude_name_hint"
+	        android:textSize="22sp" />
+	       
+	    <EditText 
+	        android:id="@+id/attitude_name_input"
+	        android:inputType="textCapSentences"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textSize="22sp"
+	        android:singleLine="true" />
+	    
+	    <!-- DESCRIPTION -->
+		<TextView
+	        android:id="@+id/attitude_description_text"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/attitude_description_hint"
+	        android:textSize="22sp" />
+	       
+	    <EditText 
+	        android:id="@+id/attitude_description_input"
+	        android:inputType="textCapSentences"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textSize="22sp"
+	        android:singleLine="false" />
+	    
+    </LinearLayout>
+    
+    <!-- WEIGHT -->
+	<TextView
+        android:id="@+id/attitude_weight_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/attitude_weight_hint"
+        android:textSize="22sp"
+        android:layout_below="@id/name_description_section" />
+       
+    <EditText
+        android:id="@+id/attitude_weight_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/attitude_weight_text"
+        android:inputType="numberSigned|numberDecimal"
+        android:text="-1"
+        android:textSize="22sp" />
+    
+    <!-- BUTTON -->
+    <Button
+        android:id="@+id/cancel_attitude_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel_button_hint"
+        android:textSize="22sp"
+        android:layout_below="@id/attitude_weight_input"
+        android:layout_alignParentBottom="true" />
+    
+    <Button
+        android:id="@+id/update_attitude_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/update_button_hint"
+        android:textSize="22sp"
+        android:layout_toRightOf="@id/cancel_attitude_button"
+        android:layout_alignParentBottom="true" />
+    
+    <Button
+        android:id="@+id/add_attitude_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_button_hint"
+        android:textSize="22sp"
+        android:layout_toRightOf="@id/update_attitude_button"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>
+
+</ScrollView>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="500.20001"
+   height="435.86475"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="ic_calendar_green.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="265.6974"
+     inkscape:cy="392.04189"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-bottom="0.1"
+     fit-margin-left="0.1"
+     fit-margin-top="0.1"
+     fit-margin-right="0.1"
+     inkscape:window-width="1366"
+     inkscape:window-height="702"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-132.26414,-307.3149)">
+    <path
+       style="fill:#009600;fill-opacity:1;stroke:none"
+       d="M 108.875 55.96875 C 76.445477 55.96875 50.3125 82.070477 50.3125 114.5 L 50.3125 374.15625 C 50.3125 406.58577 76.445477 432.71875 108.875 432.71875 L 395.75 432.71875 C 428.17952 432.71875 454.28125 406.58577 454.28125 374.15625 L 454.28125 114.5 C 454.28125 82.070477 428.17952 55.96875 395.75 55.96875 L 388.40625 55.96875 L 388.40625 78.9375 C 388.40625 104.79253 367.57378 125.59375 341.71875 125.59375 L 321.71875 125.59375 C 295.86372 125.59375 275.03125 104.79253 275.03125 78.9375 L 275.03125 55.96875 L 232.40625 55.96875 L 232.40625 78.9375 C 232.40625 104.79253 211.57378 125.59375 185.71875 125.59375 L 165.71875 125.59375 C 139.86372 125.59375 119.03125 104.79253 119.03125 78.9375 L 119.03125 55.96875 L 108.875 55.96875 z M 127.59375 168.53125 L 377.03125 168.53125 C 394.81708 168.53125 409.125 182.87042 409.125 200.65625 L 409.125 355.5625 C 409.125 373.34833 394.81708 387.6875 377.03125 387.6875 L 127.59375 387.6875 C 109.80792 387.6875 95.46875 373.34833 95.46875 355.5625 L 95.46875 200.65625 C 95.46875 182.87042 109.80792 168.53125 127.59375 168.53125 z "
+       transform="translate(132.26414,307.3149)"
+       id="rect3760" />
+    <rect
+       ry="34.447227"
+       y="315.45978"
+       x="422.15134"
+       height="101.46041"
+       width="83.671204"
+       id="rect3775"
+       style="fill:#009600;fill-opacity:1;stroke:none" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       id="rect3777"
+       width="68.968185"
+       height="63.039894"
+       x="258.12357"
+       y="511.87869"
+       ry="13.834084" />
+    <rect
+       ry="13.834084"
+       y="511.87869"
+       x="350.08115"
+       height="63.039894"
+       width="68.968185"
+       id="rect3779"
+       style="fill:#000000;fill-opacity:1;stroke:none" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       id="rect3781"
+       width="68.968185"
+       height="63.039894"
+       x="442.03873"
+       y="511.87869"
+       ry="13.834084" />
+    <rect
+       ry="13.834084"
+       y="595.93182"
+       x="258.12357"
+       height="63.039894"
+       width="68.968185"
+       id="rect3783"
+       style="fill:#000000;fill-opacity:1;stroke:none" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       id="rect3785"
+       width="68.968185"
+       height="63.039894"
+       x="350.08115"
+       y="595.93182"
+       ry="13.834084" />
+    <rect
+       ry="13.834084"
+       y="595.93182"
+       x="442.03873"
+       height="63.039894"
+       width="68.968185"
+       id="rect3787"
+       style="fill:#000000;fill-opacity:1;stroke:none" />
+    <rect
+       style="fill:#009600;fill-opacity:1;stroke:none"
+       id="rect3766"
+       width="83.671204"
+       height="101.46041"
+       x="266.15134"
+       y="315.45978"
+       ry="34.447227" />
+  </g>
+</svg>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * Copyright (C) 2014 Román Ginés Martínez Ferrández <rgmf@riseup.net>
+ *
+ * This program (LibreTeacherNotebook) is free software: you can 
+ * redistribute it and/or modify it under the terms of the GNU General 
+ * Public License as published by the Free Software Foundation, either
+ * version 3 of the License, or any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+ -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <ScrollView 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:paddingBottom="55dp">
+        
+        <RelativeLayout 
+	        android:layout_width="fill_parent" 
+	        android:layout_height="wrap_content"
+	        android:padding="10dp">
+    
+		    <!-- TextView where will be the id of the evaluation. -->
+		    <TextView
+		       android:id="@+id/evaluation_id"
+		       android:layout_width="match_parent"
+		       android:layout_height="wrap_content"
+		       android:visibility="invisible" />
+		    
+		    <!-- The title -->
+		    <TextView 
+		       android:id="@+id/evaluation_detail_title"
+		       android:layout_width="match_parent"
+		       android:layout_height="wrap_content"
+		       android:gravity="center"
+		       android:textSize="22sp"
+		       android:text="@string/evaluation_detail_hint" />
+		    
+		    <RelativeLayout
+		        android:id="@+id/evaluation_detail_fields"
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"
+			    android:layout_below="@id/evaluation_detail_title">
+		    
+			    <!-- NAME -->
+				<TextView
+			        android:id="@+id/evaluation_name_text"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:text="@string/evaluation_name_hint"
+			        android:textSize="22sp" />
+			       
+			    <EditText 
+			        android:id="@+id/evaluation_name_input"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:textSize="@dimen/text_size_large"
+			        android:singleLine="true"
+			        android:layout_below="@id/evaluation_name_text"
+                	android:selectAllOnFocus="true" />
+			   
+			    <!-- START DATE -->	        
+				<TextView
+			        android:id="@+id/evaluation_startdate_text"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:text="@string/evaluation_startdate_hint"
+			        android:textSize="@dimen/text_size_large"
+			        android:layout_below="@id/evaluation_name_input" />
+			       
+			    <DatePicker
+			        android:id="@+id/evaluation_startdate_input"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:textSize="22sp"
+			        android:singleLine="true"
+			        android:layout_below="@id/evaluation_startdate_text" />
+			 
+			    <!-- END DATE -->
+				<TextView
+			        android:id="@+id/evaluation_enddate_text"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:text="@string/evaluation_enddate_hint"
+			        android:textSize="@dimen/text_size_large"
+			        android:layout_below="@id/evaluation_startdate_input" />
+			       
+			    <DatePicker
+			        android:id="@+id/evaluation_enddate_input"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:singleLine="true"
+			        android:textSize="22sp"
+			        android:layout_below="@id/evaluation_enddate_text" />
+			    
+			</RelativeLayout>
+			
+		</RelativeLayout>
+		
+	</ScrollView>
+	
+    <!-- BUTTON BAR -->
+    <RelativeLayout
+        android:id="@+id/footer_evaluation_detail" 
+        android:layout_width="fill_parent" 
+        android:layout_height="50dp"
+	    android:layout_alignParentBottom="true"
+	    style="@style/LtbBarButton">
+	    
+        <ImageView
+	        android:id="@+id/evaluation_delete_button"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/ic_action_discard"
+	        android:layout_alignParentLeft="true"
+	        android:paddingLeft="20dp" />
+        
+	    <ImageView
+	        android:id="@+id/evaluation_update_button"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/ic_action_save"
+	        android:layout_alignParentRight="true"
+	        android:paddingRight="20dp" />
+    
+	</RelativeLayout>
+	    
+</RelativeLayout>

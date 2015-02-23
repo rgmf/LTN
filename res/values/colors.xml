@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * Copyright (C) 2014 Román Ginés Martínez Ferrández <rgmf@riseup.net>
+ *
+ * This program (LibreTeacherNotebook) is free software: you can 
+ * redistribute it and/or modify it under the terms of the GNU General 
+ * Public License as published by the Free Software Foundation, either
+ * version 3 of the License, or any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+ -->
+ 
+<resources>
+	<!-- General colors. -->
+    <color name="white">#FFFFFF</color>
+    <color name="gray">#808080</color>
+    <color name="gray_light">#D0D0D0</color>
+    <color name="black">#000000</color>
+    <color name="dark_light">#9D9D9D</color>
+    <color name="app_green_logo">#009600</color>
+
+    <!-- Background application color -->
+    <color name="bg_application_color">#FFFAD6</color>
+
+    <!-- Bars colors. -->
+    <color name="bg_button_bar_color">#6C5F00</color>
+    <color name="fg_button_bar_color">#FFFAD6</color>
+
+    <!-- ListViews -->
+    <color name="lv_selected_item">#E8DC86</color>
+
+    <!-- Use Gingerbread-orange -->
+    <!--
+    <color name="selection_background_color_dark">#FEBB20</color>
+    <color name="selection_background_color_light">#FEBB20</color>
+    -->
+    
+    <!-- Color for buttons -->
+    <color name="pressed_button_background">#9d9d9d</color>
+    <color name="released_button_background">#9d9d9d</color>
+
+</resources>

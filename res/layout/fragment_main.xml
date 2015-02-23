@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * Copyright (C) 2014 Román Ginés Martínez Ferrández <rgmf@riseup.net>
+ *
+ * This program (LibreTeacherNotebook) is free software: you can 
+ * redistribute it and/or modify it under the terms of the GNU General 
+ * Public License as published by the Free Software Foundation, either
+ * version 3 of the License, or any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+ -->
+
+<ScrollView 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+    	xmlns:tools="http://schemas.android.com/tools" >
+
+    <GridLayout 
+	    android:id="@+id/main_view"
+	    tools:context="es.rgmf.ltn.LibreTeacherNotebook"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:paddingLeft="10dp"
+	    android:paddingRight="10dp"
+	    android:columnCount="2"
+	    android:rowCount="2" >
+	    
+        <!-- COURSE -->
+        <LinearLayout
+	        android:layout_width="wrap_content"
+	        android:layout_column="0"
+	        android:layout_gravity="center_vertical|center_horizontal"
+	        android:layout_row="0"
+	        android:gravity="center_horizontal"
+	        android:orientation="vertical" >
+	        <ImageView
+	            android:id="@+id/course_icon"
+	            android:contentDescription="course_icon"
+	            android:layout_margin="10dp"
+	            android:layout_width="80dp"
+	            android:layout_height="80dp"
+	            android:layout_gravity="center"
+	            android:background="?android:selectableItemBackground"
+	            android:src="@drawable/ic_course"
+	            android:onClick="startCourseManagementActivity" />
+	        <TextView
+		        android:id="@+id/course_text"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/course_capital_letter_hint"
+		        android:textSize="22sp"
+		        android:textStyle="bold" />
+		</LinearLayout>
+		
+        <!-- STUDENTS -->
+        <LinearLayout
+	        android:layout_width="wrap_content"
+	        android:layout_column="1"
+	        android:layout_gravity="center_vertical|center_horizontal"
+	        android:layout_row="0"
+	        android:gravity="center_horizontal"
+	        android:orientation="vertical" >
+	        <ImageView
+	            android:id="@+id/student_icon"
+	            android:contentDescription="student_icon"
+	            android:layout_margin="10dp"
+	            android:layout_width="80dp"
+	            android:layout_height="80dp"
+	            android:layout_gravity="center"
+	            android:background="?android:selectableItemBackground"
+	            android:src="@drawable/ic_student" />
+	        <TextView
+		        android:id="@+id/student_text"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/student_capital_letter_hint"
+		        android:textSize="22sp"
+		        android:textStyle="bold" />
+		</LinearLayout>
+		
+        <!-- EVALUACTION -->
+        <LinearLayout
+	        android:layout_width="wrap_content"
+	        android:layout_column="0"
+	        android:layout_gravity="center_vertical|center_horizontal"
+	        android:layout_row="1"
+	        android:gravity="center_horizontal"
+	        android:orientation="vertical" >
+	        <ImageView
+	            android:id="@+id/evaluation_icon"
+	            android:contentDescription="evaluation_icon"
+	            android:layout_margin="10dp"
+	            android:layout_width="80dp"
+	            android:layout_height="80dp"
+	            android:layout_gravity="center"
+	            android:background="?android:selectableItemBackground"
+	            android:src="@drawable/ic_calendar_green"
+	            android:onClick="startEvaluationManagementActivity" />
+	        <TextView
+		        android:id="@+id/evaluation_text"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/evaluation_capital_letter_hint"
+		        android:textSize="22sp"
+		        android:textStyle="bold" />
+		</LinearLayout>
+		
+        <!-- ATTENDANCE -->
+        <LinearLayout
+            android:id="@+id/attendance_linear_layout"
+	        android:layout_width="wrap_content"
+	        android:layout_column="1"
+	        android:layout_gravity="center_vertical|center_horizontal"
+	        android:layout_row="1"
+	        android:gravity="center_horizontal"
+	        android:orientation="vertical" >
+	        <ImageView
+	            android:id="@+id/attendance_icon"
+	            android:contentDescription="attendance_icon"
+	            android:layout_margin="10dp"
+	            android:layout_width="80dp"
+	            android:layout_height="80dp"
+	            android:layout_gravity="center"
+	            android:background="?android:selectableItemBackground"
+	            android:src="@drawable/ic_course"
+	            android:onClick="startAttendanceManagementActivity" />
+	        <TextView
+		        android:id="@+id/attendance_text"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/attendance_capital_letter_hint"
+		        android:textSize="22sp"
+		        android:textStyle="bold" />
+		</LinearLayout>
+	    
+	</GridLayout>
+    
+</ScrollView>

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * Copyright (C) 2014 Román Ginés Martínez Ferrández <rgmf@riseup.net>
+ *
+ * This program (LibreTeacherNotebook) is free software: you can 
+ * redistribute it and/or modify it under the terms of the GNU General 
+ * Public License as published by the Free Software Foundation, either
+ * version 3 of the License, or any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/add_course"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_application_color" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:paddingBottom="55dp" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="20dp" >
+
+            <!-- LEVEL -->
+
+            <TextView
+                android:id="@+id/course_level_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/course_level_hint"
+                android:textSize="@dimen/text_size_large" />
+
+            <EditText
+                android:id="@+id/course_level_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/course_level_text"
+                android:hint="@string/course_level_help"
+                android:inputType="textCapSentences"
+                android:singleLine="true"
+                android:textSize="@dimen/text_size_large"
+                android:selectAllOnFocus="true" />
+
+            <!-- NAME -->
+
+            <TextView
+                android:id="@+id/course_name_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/course_level_input"
+                android:text="@string/course_name_hint"
+                android:textSize="@dimen/text_size_large" />
+
+            <EditText
+                android:id="@+id/course_name_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/course_name_text"
+                android:hint="@string/course_name_help"
+                android:inputType="textCapSentences"
+                android:singleLine="true"
+                android:textSize="@dimen/text_size_large"
+                android:selectAllOnFocus="true" />
+
+            <!-- GROUP -->
+
+            <TextView
+                android:id="@+id/course_group_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/course_name_input"
+                android:text="@string/course_group_hint"
+                android:textSize="@dimen/text_size_large"
+                android:selectAllOnFocus="true" />
+
+            <EditText
+                android:id="@+id/course_group_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/course_group_text"
+                android:hint="@string/course_group_help"
+                android:inputType="textCapSentences"
+                android:singleLine="true"
+                android:textSize="@dimen/text_size_large"
+                android:selectAllOnFocus="true" />
+
+            <!-- TUTOR -->
+
+            <TextView
+                android:id="@+id/course_tutor_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/course_group_input"
+                android:text="@string/course_tutor_hint"
+                android:textSize="@dimen/text_size_large" />
+
+            <EditText
+                android:id="@+id/course_tutor_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/course_tutor_text"
+                android:hint="@string/course_tutor_help"
+                android:inputType="textCapSentences"
+                android:singleLine="true"
+                android:textSize="@dimen/text_size_large"
+                android:selectAllOnFocus="true" />
+
+            <!-- PERCENTAGES (WEIGHTES) OF CONCEPTS, PROCEDURES AND ATTITUDES -->
+
+            <TextView
+                android:id="@+id/course_weightes_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/course_tutor_input"
+                android:text="@string/course_weightes_hint"
+                android:textSize="@dimen/text_size_large" />
+
+            <EditText
+                android:id="@+id/course_concept_weight_input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/course_weightes_text"
+                android:hint="@string/course_concepts_percentage"
+                android:inputType="numberDecimal"
+                android:paddingRight="20dp"
+                android:singleLine="true"
+                android:textSize="@dimen/text_size_large"
+                android:selectAllOnFocus="true" />
+
+            <EditText
+                android:id="@+id/course_procedure_weight_input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/course_weightes_text"
+                android:layout_toRightOf="@id/course_concept_weight_input"
+                android:hint="@string/course_procedures_percentage"
+                android:inputType="numberDecimal"
+                android:paddingRight="20dp"
+                android:singleLine="true"
+                android:textSize="@dimen/text_size_large"
+                android:selectAllOnFocus="true" />
+
+            <EditText
+                android:id="@+id/course_attitude_weight_input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/course_weightes_text"
+                android:layout_toRightOf="@id/course_procedure_weight_input"
+                android:hint="@string/course_attitudes_percentage"
+                android:inputType="numberDecimal"
+                android:paddingRight="20dp"
+                android:singleLine="true"
+                android:textSize="@dimen/text_size_large"
+                android:selectAllOnFocus="true" />
+
+            <TextView
+                android:id="@+id/course_weightes_total_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/course_weightes_text"
+                android:layout_toRightOf="@id/course_attitude_weight_input"
+                android:textSize="@dimen/text_size_large" />
+        </RelativeLayout>
+    </ScrollView>
+
+    <!-- BUTTON BAR -->
+
+    <RelativeLayout
+        android:id="@+id/footer_add_course"
+        style="@style/LtbBarButton"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true" >
+
+        <ImageView
+            android:id="@+id/course_cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="20dp"
+            android:src="@drawable/ic_cancel_dark_light" />
+
+        <ImageView
+            android:id="@+id/course_ok_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:paddingRight="20dp"
+            android:src="@drawable/ic_ok_dark_light" />
+    </RelativeLayout>
+
+</RelativeLayout>

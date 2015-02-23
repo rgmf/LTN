@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="48px"
+   height="48px"
+   id="svg3069"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="ic_attendance_no_justify.svg"
+   inkscape:export-filename="/home/roman/workspace/eclipse/LibreTeacherNotebook/res/drawable/ic_attendance_delay.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs3071" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="9.8994949"
+     inkscape:cx="23.611217"
+     inkscape:cy="28.875363"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:grid-bbox="true"
+     inkscape:document-units="px"
+     inkscape:window-width="1362"
+     inkscape:window-height="729"
+     inkscape:window-x="40"
+     inkscape:window-y="31"
+     inkscape:window-maximized="0">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3077"
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata3074">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer">
+    <path
+       sodipodi:type="arc"
+       style="fill:none;stroke:#009600;stroke-width:8.40747643;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path3810"
+       sodipodi:cx="75.5"
+       sodipodi:cy="25"
+       sodipodi:rx="19.5"
+       sodipodi:ry="19"
+       d="m 95,25 a 19.5,19 0 1 1 -39,0 19.5,19 0 1 1 39,0 z"
+       transform="matrix(1.0150753,0,0,1.0150753,-52.600426,-1.4147345)" />
+    <path
+       style="fill:none;stroke:#960000;stroke-width:3;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 24.037759,10.969798 0,12.979695"
+       id="path3812"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path3814"
+       d="m 33.457033,24.196955 -9.343147,-10e-7"
+       style="fill:none;stroke:#960000;stroke-width:3;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <rect
+       style="fill:none;stroke:#960000;stroke-width:2.79691625;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect3816"
+       width="1.2030836"
+       height="2.8898854"
+       x="23.444145"
+       y="3.1817088" />
+    <rect
+       y="-45.188602"
+       x="23.218008"
+       height="2.8898854"
+       width="1.2030836"
+       id="rect3819"
+       style="fill:none;stroke:#960000;stroke-width:2.79691625;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       transform="matrix(0,1,-1,0,0,0)" />
+    <rect
+       y="41.969505"
+       x="23.444145"
+       height="2.8898854"
+       width="1.2030836"
+       id="rect3821"
+       style="fill:none;stroke:#960000;stroke-width:2.79691625;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <rect
+       transform="matrix(0,1,-1,0,0,0)"
+       style="fill:none;stroke:#960000;stroke-width:2.79691625;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect3823"
+       width="1.2030836"
+       height="2.8898854"
+       x="23.218008"
+       y="-5.4916477" />
+  </g>
+</svg>
