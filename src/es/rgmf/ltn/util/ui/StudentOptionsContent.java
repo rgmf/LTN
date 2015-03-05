@@ -13,6 +13,7 @@ import es.rgmf.ltn.R;
  * TODO: Replace all uses of this class before publishing your app.
  */
 public class StudentOptionsContent {
+	// These numbers are the positions in the ListView.
 	public static final String PERSONAL_DATA = "1";
 	public static final String ATTENDANCE = "2";
 

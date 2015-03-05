@@ -19,7 +19,9 @@ package es.rgmf.ltn.fragments;
 
 import android.app.Activity;
 import android.app.ListFragment;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -93,9 +95,11 @@ public class StudentOptionsFragment extends ListFragment {
 
 		// List adapter.
 		mOptionsContent = new StudentOptionsContent(getActivity());
-		setListAdapter(new ArrayAdapter<StudentOptionsContent.OptionsItem>(getActivity(),
+		ArrayAdapter<StudentOptionsContent.OptionsItem> adapter = new ArrayAdapter<StudentOptionsContent.OptionsItem>(getActivity(),
 				android.R.layout.simple_list_item_activated_1,
-				android.R.id.text1, mOptionsContent.getItems()));
+				android.R.id.text1, mOptionsContent.getItems());
+		setListAdapter(adapter);
+		
 	}
 
 	@Override
@@ -109,6 +113,33 @@ public class StudentOptionsFragment extends ListFragment {
 					.getInt(STATE_ACTIVATED_POSITION));
 		}
 	}
+	
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+	    ListView listView = getListView();
+	    int wantedPosition = 1;
+		int firstPosition = listView.getFirstVisiblePosition() - listView.getHeaderViewsCount();
+		int wantedChild = wantedPosition - firstPosition;
+		if (wantedChild < 0 || wantedChild >= listView.getChildCount()) {
+			Log.w("StudentActivity::onItemSelected", "Unable to get view for desired position, because it's no being displayed on screen.");
+		}
+		else {
+			View wantedView = listView.getChildAt(wantedChild);
+			wantedView.setBackgroundColor(Color.YELLOW);
+		}
+		
+	    super.onActivityCreated(savedInstanceState);
+	}
+	
+	/*
+	@Override
+    public void onStart() {
+        super.onStart();
+        
+        //set first item activated by default
+        //onListItemClick(getListView(), getView(), 1, 0);
+    }
+    */
 
 	@Override
 	public void onAttach(Activity activity) {
@@ -139,6 +170,7 @@ public class StudentOptionsFragment extends ListFragment {
 		// Notify the active callbacks interface (the activity, if the
 		// fragment is attached to one) that an item has been selected.
 		mCallbacks.onItemSelected(mOptionsContent.getItems().get(position).id);
+		view.setBackgroundColor(Color.YELLOW);
 	}
 
 	@Override
@@ -170,5 +202,14 @@ public class StudentOptionsFragment extends ListFragment {
 		}
 
 		mActivatedPosition = position;
+	}
+
+	/**
+	 * This method is used by activity to initialized the item activated.
+	 * 
+	 * @param i Index of the item activated of the list view.
+	 */
+	public void setSelectedItem(int i) {
+		mActivatedPosition = i;
 	}
 }
