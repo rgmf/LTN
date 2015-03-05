@@ -104,7 +104,8 @@ public class StudentAttitudesFragment extends StudentMarksFragment {
 	@Override
 	public void onListItemClick(ListView l, View v, int pos, long id) {
       mPositionSelected = pos;
-	  Toast.makeText(getActivity(), "Item " + pos + " was clicked", Toast.LENGTH_SHORT).show();
+	  //Toast.makeText(getActivity(), "Item " + pos + " was clicked", Toast.LENGTH_SHORT).show();
+	  changePositionItem(pos);
 	}
 	
 	/**

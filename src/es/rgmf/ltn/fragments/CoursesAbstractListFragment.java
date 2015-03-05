@@ -85,6 +85,12 @@ abstract public class CoursesAbstractListFragment extends ListFragment {
 			setCourse((Course) mAdapter.getItem(mSelectedItem));
 		}
 	}
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+	}
 
 	/**
 	 * This method is called when the fragment is showed to the user.
