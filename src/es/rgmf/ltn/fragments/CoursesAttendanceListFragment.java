@@ -43,6 +43,8 @@ public class CoursesAttendanceListFragment extends CoursesAbstractListFragment {
 	@Override
 	public void onListItemClick(ListView listView, View view, int position, long id) {
 		if(listView != null) {
+			mSelectedItem = position;
+			
 			int firstPosition = listView.getFirstVisiblePosition() - listView.getHeaderViewsCount(); // This is the same as child #0
 			int wantedChild = position - firstPosition;
 			// Say, first visible position is 8, you want position 10, wantedChild will now be 2

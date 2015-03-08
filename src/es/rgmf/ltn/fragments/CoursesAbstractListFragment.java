@@ -88,7 +88,6 @@ abstract public class CoursesAbstractListFragment extends ListFragment {
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 	}
 
@@ -102,7 +101,7 @@ abstract public class CoursesAbstractListFragment extends ListFragment {
 		mCoursesList = ReaderModel.getCourses(getActivity());
 		mAdapter = new CourseListAdapter(getActivity(), mCoursesList);
 		setListAdapter(mAdapter);
-
+		
 		if (mAdapter.getCount() > 0) {
 			mAdapter.setSelectedItem(mSelectedItem);
 			setCourse((Course) mAdapter.getItem(mSelectedItem));
