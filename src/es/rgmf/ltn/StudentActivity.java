@@ -58,6 +58,10 @@ public class StudentActivity extends Activity implements
 	 * The course identify.
 	 */
 	private Integer mCourseId;
+	/**
+	 * The option index selected in the options list view.
+	 */
+	private Integer mOptionIdx;
 
 	/**
 	 * Whether or not the activity is in two-pane mode, i.e. running on a tablet
@@ -95,20 +99,34 @@ public class StudentActivity extends Activity implements
 			
 			// Select the option (this can be passed from other activity or fragment).
 			// By default we select personal data option.
-			int optionIdx = Integer.valueOf(StudentOptionsContent.PERSONAL_DATA) - 1;
-			if (args.containsKey(OPTION_ID)) {
-				//onItemSelected(args.getString(OPTION_ID));
-				optionIdx = Integer.valueOf(args.getString(OPTION_ID)) - 1;
+			if (savedInstanceState == null) {
+				mOptionIdx = Integer.valueOf(StudentOptionsContent.PERSONAL_DATA);
+				if (args.containsKey(OPTION_ID)) {
+					//onItemSelected(args.getString(OPTION_ID));
+					mOptionIdx = Integer.valueOf(args.getString(OPTION_ID));
+					//sof.getListView().requestFocusFromTouch();
+					//sof.getListView().setSelection(mOptionIdx);
+					//sof.getListView().performItemClick(sof.getListView().getAdapter().getView(mOptionIdx, null, null), mOptionIdx, mOptionIdx);
+				}
 				sof.getListView().requestFocusFromTouch();
-				sof.getListView().setSelection(optionIdx);
-				sof.getListView().performItemClick(sof.getListView().getAdapter().getView(optionIdx, null, null), optionIdx, optionIdx);
+				sof.getListView().setSelection(mOptionIdx);
+				sof.getListView().performItemClick(sof.getListView().getAdapter().getView(mOptionIdx, null, null), mOptionIdx, mOptionIdx);
 			}
-			sof.getListView().requestFocusFromTouch();
-			sof.getListView().setSelection(optionIdx);
-			sof.getListView().performItemClick(sof.getListView().getAdapter().getView(optionIdx, null, null), optionIdx, optionIdx);
+			else {
+				mOptionIdx = savedInstanceState.getInt(OPTION_ID);
+				sof.getListView().requestFocusFromTouch();
+				sof.getListView().setSelection(mOptionIdx);
+				sof.getListView().performItemClick(sof.getListView().getAdapter().getView(mOptionIdx, null, null), mOptionIdx, mOptionIdx);
+			}
 		}
 
 		// TODO: If exposing deep links into your app, handle intents here.
+	}
+	
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putInt(OPTION_ID, mOptionIdx);
 	}
 
 	/**
@@ -117,31 +135,8 @@ public class StudentActivity extends Activity implements
 	 */
 	@Override
 	public void onItemSelected(String id) {
+		mOptionIdx = Integer.valueOf(id);
 		if (mTwoPane) {
-			/*
-			ListView listView = ((StudentOptionsFragment) getFragmentManager().findFragmentById(
-					R.id.student_options)).getListView();
-			int wantedPosition = Integer.valueOf(id) - 1;
-			int firstPosition = listView.getFirstVisiblePosition() - listView.getHeaderViewsCount();
-			int wantedChild = wantedPosition - firstPosition;
-			if (wantedChild < 0 || wantedChild >= listView.getChildCount()) {
-				Log.w("StudentActivity::onItemSelected", "Unable to get view for desired position, because it's no being displayed on screen.");
-			}
-			else {
-				View wantedView = listView.getChildAt(wantedChild);
-				wantedView.setBackgroundColor(Color.YELLOW);
-			}
-			
-			Log.v("Número de views en el listview", "" + listView.getChildCount());
-			*/
-			
-			//listView.requestFocusFromTouch();
-			//listView.setSelection(Integer.valueOf(id) - 1);
-			
-			//listView.setBackgroundColor(this.getResources().getColor(R.color.lv_selected_item));
-			//listView.setBackgroundColor(Color.YELLOW);
-			//((View) listView.getItemAtPosition(Integer.valueOf(id) - 1)).setBackgroundColor(Color.YELLOW);
-			
 			// In two-pane mode, show the detail view in this activity by
 			// adding or replacing the detail fragment using a
 			// fragment transaction.

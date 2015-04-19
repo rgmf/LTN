@@ -14,8 +14,8 @@ import es.rgmf.ltn.R;
  */
 public class StudentOptionsContent {
 	// These numbers are the positions in the ListView.
-	public static final String PERSONAL_DATA = "1";
-	public static final String ATTENDANCE = "2";
+	public static final String PERSONAL_DATA = "0";
+	public static final String ATTENDANCE = "1";
 
 	/**
 	 * An array of items.
@@ -23,8 +23,8 @@ public class StudentOptionsContent {
 	private List<OptionsItem> mItems = new ArrayList<OptionsItem>();
 	
 	public StudentOptionsContent(Context ctx) {
-		addItem(new OptionsItem("1", ctx.getString(R.string.personal_data)));
-		addItem(new OptionsItem("2", ctx.getString(R.string.attendance)));
+		addItem(new OptionsItem("0", ctx.getString(R.string.personal_data)));
+		addItem(new OptionsItem("1", ctx.getString(R.string.attendance)));
 	}
 
 	private void addItem(OptionsItem item) {

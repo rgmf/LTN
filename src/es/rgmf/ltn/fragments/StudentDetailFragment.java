@@ -84,7 +84,7 @@ public class StudentDetailFragment extends Fragment {
 
 		// Change this fragment to fragment specify by mItem (depend on mItem value).
 		switch (mItem) {
-		case "1":
+		case "0":
 			StudentPersonalDataFragment pdFragment = new StudentPersonalDataFragment();
 			arguments = new Bundle();
 			arguments.putInt(StudentActivity.STUDENT_ID, mStudentId);
@@ -95,7 +95,7 @@ public class StudentDetailFragment extends Fragment {
 			transaction.addToBackStack(null); // To preserve back button behaviour.
 			transaction.commit();
 			break;
-		case "2":
+		case "1":
 			StudentAttendanceFragment aFragment = new StudentAttendanceFragment();
 			arguments = new Bundle();
 			arguments.putInt(StudentActivity.STUDENT_ID, mStudentId);

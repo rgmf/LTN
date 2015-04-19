@@ -19,9 +19,7 @@ package es.rgmf.ltn.fragments;
 
 import android.app.Activity;
 import android.app.ListFragment;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -99,7 +97,6 @@ public class StudentOptionsFragment extends ListFragment {
 				android.R.layout.simple_list_item_activated_1,
 				android.R.id.text1, mOptionsContent.getItems());
 		setListAdapter(adapter);
-		
 	}
 
 	@Override
@@ -114,22 +111,28 @@ public class StudentOptionsFragment extends ListFragment {
 		}
 	}
 	
-	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-	    ListView listView = getListView();
+	/*@Override
+	public void onActivityCreated(Bundle savedInstanceState) {*/
+	    /*ListView listView = getListView();
 	    int wantedPosition = 1;
 		int firstPosition = listView.getFirstVisiblePosition() - listView.getHeaderViewsCount();
 		int wantedChild = wantedPosition - firstPosition;
 		if (wantedChild < 0 || wantedChild >= listView.getChildCount()) {
-			Log.w("StudentActivity::onItemSelected", "Unable to get view for desired position, because it's no being displayed on screen.");
+			Log.w("StudentOptionsFragment::onActivityCreated", "Unable to get view for desired position, because it's no being displayed on screen.");
 		}
 		else {
-			View wantedView = listView.getChildAt(wantedChild);
-			wantedView.setBackgroundColor(Color.YELLOW);
-		}
+			//View wantedView = listView.getChildAt(wantedChild);
+			//wantedView.setBackgroundColor(getResources().getColor(R.color.lv_selected_item));
+			for(int i = 0; i < listView.getChildCount(); i++) {
+				if(i != wantedPosition) // If is not the item selected.
+					listView.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.bg_application_color));
+				else // If is the item selected.
+					listView.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.lv_selected_item));
+			}
+		}*/
 		
-	    super.onActivityCreated(savedInstanceState);
-	}
+	    /*super.onActivityCreated(savedInstanceState);
+	}*/
 	
 	/*
 	@Override
@@ -169,8 +172,14 @@ public class StudentOptionsFragment extends ListFragment {
 
 		// Notify the active callbacks interface (the activity, if the
 		// fragment is attached to one) that an item has been selected.
+		mActivatedPosition = position;
 		mCallbacks.onItemSelected(mOptionsContent.getItems().get(position).id);
-		view.setBackgroundColor(Color.YELLOW);
+		/*for(int i = 0; i < listView.getChildCount(); i++) {
+			if(i != position) // If is not the item selected.
+				listView.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.bg_application_color));
+			else // If is the item selected.
+				listView.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.lv_selected_item));
+		}*/
 	}
 
 	@Override
