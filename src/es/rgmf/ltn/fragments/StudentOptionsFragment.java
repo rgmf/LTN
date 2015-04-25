@@ -37,21 +37,10 @@ import es.rgmf.ltn.util.ui.StudentOptionsContent;
 public class StudentOptionsFragment extends ListFragment {
 
 	/**
-	 * The serialization (saved instance state) Bundle key representing the
-	 * activated item position. Only used on tablets.
-	 */
-	private static final String STATE_ACTIVATED_POSITION = "activated_position";
-
-	/**
 	 * The fragment's current callback object, which is notified of list item
 	 * clicks.
 	 */
 	private Callbacks mCallbacks = sCallbacks;
-
-	/**
-	 * The current activated item position. Only used on tablets.
-	 */
-	private int mActivatedPosition = ListView.INVALID_POSITION;
 	
 	/**
 	 * The options that will be show on the left panel.
@@ -100,51 +89,6 @@ public class StudentOptionsFragment extends ListFragment {
 	}
 
 	@Override
-	public void onViewCreated(View view, Bundle savedInstanceState) {
-		super.onViewCreated(view, savedInstanceState);
-
-		// Restore the previously serialized activated item position.
-		if (savedInstanceState != null
-				&& savedInstanceState.containsKey(STATE_ACTIVATED_POSITION)) {
-			setActivatedPosition(savedInstanceState
-					.getInt(STATE_ACTIVATED_POSITION));
-		}
-	}
-	
-	/*@Override
-	public void onActivityCreated(Bundle savedInstanceState) {*/
-	    /*ListView listView = getListView();
-	    int wantedPosition = 1;
-		int firstPosition = listView.getFirstVisiblePosition() - listView.getHeaderViewsCount();
-		int wantedChild = wantedPosition - firstPosition;
-		if (wantedChild < 0 || wantedChild >= listView.getChildCount()) {
-			Log.w("StudentOptionsFragment::onActivityCreated", "Unable to get view for desired position, because it's no being displayed on screen.");
-		}
-		else {
-			//View wantedView = listView.getChildAt(wantedChild);
-			//wantedView.setBackgroundColor(getResources().getColor(R.color.lv_selected_item));
-			for(int i = 0; i < listView.getChildCount(); i++) {
-				if(i != wantedPosition) // If is not the item selected.
-					listView.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.bg_application_color));
-				else // If is the item selected.
-					listView.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.lv_selected_item));
-			}
-		}*/
-		
-	    /*super.onActivityCreated(savedInstanceState);
-	}*/
-	
-	/*
-	@Override
-    public void onStart() {
-        super.onStart();
-        
-        //set first item activated by default
-        //onListItemClick(getListView(), getView(), 1, 0);
-    }
-    */
-
-	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
 
@@ -172,23 +116,7 @@ public class StudentOptionsFragment extends ListFragment {
 
 		// Notify the active callbacks interface (the activity, if the
 		// fragment is attached to one) that an item has been selected.
-		mActivatedPosition = position;
 		mCallbacks.onItemSelected(mOptionsContent.getItems().get(position).id);
-		/*for(int i = 0; i < listView.getChildCount(); i++) {
-			if(i != position) // If is not the item selected.
-				listView.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.bg_application_color));
-			else // If is the item selected.
-				listView.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.lv_selected_item));
-		}*/
-	}
-
-	@Override
-	public void onSaveInstanceState(Bundle outState) {
-		super.onSaveInstanceState(outState);
-		if (mActivatedPosition != ListView.INVALID_POSITION) {
-			// Serialize and persist the activated item position.
-			outState.putInt(STATE_ACTIVATED_POSITION, mActivatedPosition);
-		}
 	}
 
 	/**
@@ -201,24 +129,5 @@ public class StudentOptionsFragment extends ListFragment {
 		getListView().setChoiceMode(
 				activateOnItemClick ? ListView.CHOICE_MODE_SINGLE
 						: ListView.CHOICE_MODE_NONE);
-	}
-
-	private void setActivatedPosition(int position) {
-		if (position == ListView.INVALID_POSITION) {
-			getListView().setItemChecked(mActivatedPosition, false);
-		} else {
-			getListView().setItemChecked(position, true);
-		}
-
-		mActivatedPosition = position;
-	}
-
-	/**
-	 * This method is used by activity to initialized the item activated.
-	 * 
-	 * @param i Index of the item activated of the list view.
-	 */
-	public void setSelectedItem(int i) {
-		mActivatedPosition = i;
 	}
 }
