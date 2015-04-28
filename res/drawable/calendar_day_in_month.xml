@@ -17,8 +17,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
  -->
-<shape xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <solid android:color="@color/lv_selected_item" />
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
 
-</shape>
+    <item android:drawable="@drawable/calendar_rectangle_grad"/>
+    
+    <item>
+        <bitmap
+            android:gravity="bottom|right"
+            android:src="@drawable/calendar_event" />
+    </item>
+
+</layer-list>

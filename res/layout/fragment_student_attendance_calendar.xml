@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
 /**
  * Copyright (C) 2014 Román Ginés Martínez Ferrández <rgmf@riseup.net>
@@ -16,9 +16,23 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
- -->
-<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+-->
 
-    <solid android:color="@color/lv_selected_item" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    
+    <LinearLayout
+        android:id="@+id/linear_layout_calendar" 
+        android:layout_width="fill_parent"
+    	android:layout_height="fill_parent"
+    	android:orientation="vertical"></LinearLayout>
+<!--
+    <es.rgmf.ltn.fragments.layout.CalendarView
+        android:id="@+id/calendar_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+        -->
 
-</shape>
+</LinearLayout>

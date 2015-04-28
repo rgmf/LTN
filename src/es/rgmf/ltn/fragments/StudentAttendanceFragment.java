@@ -20,6 +20,8 @@ package es.rgmf.ltn.fragments;
 import java.util.List;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,25 +39,41 @@ import es.rgmf.ltn.model.orm.Attendance;
  * or a {@link StudentDetailActivity} on handsets.
  */
 public class StudentAttendanceFragment extends Fragment {
+	public static final int CALENDAR = 0;
+	public static final int TRIMESTER = 1;
+	
+	/**
+	 * Fragment selected.
+	 */
+	private int mFragmentSelected;
 	/**
 	 * The list of attendance.
 	 */
 	private List<Attendance> mAttendanceList;
+	/**
+	 * Course identify.
+	 */
+	private Integer mCourseId;
+	/**
+	 * Student identify.
+	 */
+	private Integer mStudentId;
 
 	/**
 	 * Mandatory empty constructor for the fragment manager to instantiate the
 	 * fragment (e.g. upon screen orientation changes).
 	 */
 	public StudentAttendanceFragment() {
+		mFragmentSelected = CALENDAR; // By default.
 	}
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		Integer courseId = getArguments().getInt(StudentActivity.COURSE_ID);
-		Integer studentId = getArguments().getInt(StudentActivity.STUDENT_ID);
-		mAttendanceList = ReaderModel.getAllStudentCourseAttendance(getActivity(), courseId, studentId);
+		mCourseId = getArguments().getInt(StudentActivity.COURSE_ID);
+		mStudentId = getArguments().getInt(StudentActivity.STUDENT_ID);
+		mAttendanceList = ReaderModel.getAllStudentCourseAttendance(getActivity(), mCourseId, mStudentId);
 	}
 
 	@Override
@@ -64,6 +82,7 @@ public class StudentAttendanceFragment extends Fragment {
 		View rootView = inflater.inflate(R.layout.fragment_student_attendance,
 				container, false);
 		
+		// Load general information about student/course attendance.
 		int noJustify = 0;
 		int justify = 0;
 		int delay = 0;
@@ -89,7 +108,34 @@ public class StudentAttendanceFragment extends Fragment {
 		tvNotJustify.setText("Faltas no justificadas: " + noJustify);
 		tvJustify.setText("Faltas justificadas: " + justify);
 		tvDelay.setText("Retrasos: " + delay);
+		
+		// Load fragment in the fragment layout.
+		if(savedInstanceState == null) {
+			FragmentManager fragmentManager = getFragmentManager();
+			FragmentTransaction fragmentTransaction = fragmentManager
+					.beginTransaction();
+			switch(mFragmentSelected) {
+			case CALENDAR:
+				StudentAttendanceCalendarFragment fragment = StudentAttendanceCalendarFragment.newInstance(
+						mCourseId, mStudentId, mAttendanceList);
+				fragmentTransaction.replace(
+						R.id.attendance_framelayout_detail,
+						(Fragment) fragment);
+				break;
+			case TRIMESTER:
+				break;
+			}
+			fragmentTransaction.commit();
+		}
 
 		return rootView;
+	}
+	
+	/**
+	 * Save instance state to maintain rotation screen state.
+	 */
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
 	}
 }

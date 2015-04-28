@@ -16,31 +16,40 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
- -->
- 
- <LinearLayout 
-    xmlns:android="http://schemas.android.com/apk/res/android"
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="5dp" >
-    
-     <TextView
+
+    <!-- GENERAL INFORMATION ABOUT ATTENDANCE -->
+
+    <TextView
         android:id="@+id/fsa_student_attendance_not_justify"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_size_large" />
- 
+
     <TextView
         android:id="@+id/fsa_student_attendance_justify"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_size_large" />
-     
+
     <TextView
         android:id="@+id/fsa_student_attendance_delay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_size_large" />
-    
+
+    <!-- FRAME LAYOUT WHERE IT LOADS THE ATTENDANCE BY SEMESTER, etc -->
+
+    <FrameLayout
+        android:id="@+id/attendance_framelayout_detail"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp" />
+
 </LinearLayout>
