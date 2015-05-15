@@ -16,6 +16,7 @@ public class StudentOptionsContent {
 	// These numbers are the positions in the ListView.
 	public static final String PERSONAL_DATA = "0";
 	public static final String ATTENDANCE = "1";
+	public static final String MARKS = "2";
 
 	/**
 	 * An array of items.
@@ -23,8 +24,9 @@ public class StudentOptionsContent {
 	private List<OptionsItem> mItems = new ArrayList<OptionsItem>();
 	
 	public StudentOptionsContent(Context ctx) {
-		addItem(new OptionsItem("0", ctx.getString(R.string.personal_data)));
-		addItem(new OptionsItem("1", ctx.getString(R.string.attendance)));
+		addItem(new OptionsItem(PERSONAL_DATA, ctx.getString(R.string.personal_data)));
+		addItem(new OptionsItem(ATTENDANCE, ctx.getString(R.string.attendance)));
+		addItem(new OptionsItem(MARKS, ctx.getString(R.string.marks)));
 	}
 
 	private void addItem(OptionsItem item) {

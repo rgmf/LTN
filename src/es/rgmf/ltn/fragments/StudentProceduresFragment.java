@@ -71,7 +71,7 @@ public class StudentProceduresFragment extends StudentMarksFragment {
 	 */
 	@Override
 	protected void setListFragment() {
-		mProceduresList = ReaderModel.getStudentCourseProcedures(mContext, mCourseId, mStudentId);
+		mProceduresList = ReaderModel.getStudentCourseProcedures(mContext, mCourseId, mStudentId, mEvaluationId);
 		mAdapter = new ProcedureMarksListAdapter(getActivity(), mProceduresList);
 		setListAdapter(mAdapter);
 	}

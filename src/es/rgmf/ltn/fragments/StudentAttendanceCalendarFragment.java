@@ -17,7 +17,6 @@
 
 package es.rgmf.ltn.fragments;
 
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,8 +30,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import es.rgmf.ltn.R;
+import es.rgmf.ltn.model.ReaderModel;
 import es.rgmf.ltn.model.orm.Attendance;
-import es.rgmf.ltn.util.Dates;
 import es.rgmf.ltn.views.CalendarView;
 
 /**
@@ -93,6 +92,7 @@ public class StudentAttendanceCalendarFragment extends Fragment {
 			// Get student attendance information to this course and put them inside
 			// a map with color information we want to the calendar view.
 			Map<String, Integer> colorMap = new HashMap<String, Integer>();
+			
 			for (Attendance a : mAttendanceList) {
 				switch (a.getEvent().getName()) {
 				case "Falta no justificada":
@@ -112,7 +112,7 @@ public class StudentAttendanceCalendarFragment extends Fragment {
 					break;
 				}
 			}
-	
+				
 			// Create and put the calendar view inside layout.
 			LinearLayout linearLayout = (LinearLayout) mRootView
 					.findViewById(R.id.linear_layout_calendar);

@@ -180,5 +180,6 @@
     <string name="personal_data">Personal data</string>
     <string name="attendance">Attendance</string>
     <string name="no_data">There are not data from this student</string>
+    <string name="marks">Marks</string>
 
 </resources>

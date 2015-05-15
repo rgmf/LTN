@@ -26,6 +26,7 @@ import android.view.ViewGroup;
 import es.rgmf.ltn.R;
 import es.rgmf.ltn.StudentActivity;
 import es.rgmf.ltn.StudentDetailActivity;
+import es.rgmf.ltn.util.ui.StudentOptionsContent;
 
 /**
  * A fragment representing a single Student detail screen. This fragment is
@@ -84,7 +85,7 @@ public class StudentDetailFragment extends Fragment {
 
 		// Change this fragment to fragment specify by mItem (depend on mItem value).
 		switch (mItem) {
-		case "0":
+		case StudentOptionsContent.PERSONAL_DATA:
 			StudentPersonalDataFragment pdFragment = new StudentPersonalDataFragment();
 			arguments = new Bundle();
 			arguments.putInt(StudentActivity.STUDENT_ID, mStudentId);
@@ -95,7 +96,7 @@ public class StudentDetailFragment extends Fragment {
 			transaction.addToBackStack(null); // To preserve back button behaviour.
 			transaction.commit();
 			break;
-		case "1":
+		case StudentOptionsContent.ATTENDANCE:
 			StudentAttendanceFragment aFragment = new StudentAttendanceFragment();
 			arguments = new Bundle();
 			arguments.putInt(StudentActivity.STUDENT_ID, mStudentId);
@@ -104,6 +105,18 @@ public class StudentDetailFragment extends Fragment {
 			
 			transaction = getFragmentManager().beginTransaction();
 			transaction.replace(R.id.student_detail_container, aFragment);
+			transaction.addToBackStack(null); // To preserve back button behaviour.
+			transaction.commit();
+			break;
+		case StudentOptionsContent.MARKS:
+			StudentMarksInfoFragment mFragment = new StudentMarksInfoFragment();
+			arguments = new Bundle();
+			arguments.putInt(StudentActivity.STUDENT_ID, mStudentId);
+			arguments.putInt(StudentActivity.COURSE_ID, mCourseId);
+			mFragment.setArguments(arguments);
+			
+			transaction = getFragmentManager().beginTransaction();
+			transaction.replace(R.id.student_detail_container, mFragment);
 			transaction.addToBackStack(null); // To preserve back button behaviour.
 			transaction.commit();
 			break;

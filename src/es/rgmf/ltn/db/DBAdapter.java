@@ -41,7 +41,6 @@ import es.rgmf.ltn.model.orm.Practice;
 import es.rgmf.ltn.model.orm.PracticeStudentMark;
 import es.rgmf.ltn.model.orm.Student;
 import es.rgmf.ltn.model.orm.Test;
-import es.rgmf.ltn.util.Session;
 
 public class DBAdapter {
 	private static DBHelper dbHelperSingleton;
@@ -1168,6 +1167,30 @@ public class DBAdapter {
 	}
     
     /**
+     * Get all evaluations ids and return they.
+     * 
+     * @return An array list with all evaluations ids.
+     */
+    public ArrayList<Integer> getEvaluationsIds() {
+    	String[] columns = {DBHelper.ID_FIELD_NAME};
+    	
+    	Cursor cursor = db.query(DBHelper.EVALUATION_TBL_NAME, columns,
+    			null, null, null, null,
+    			DBHelper.ID_FIELD_NAME + " COLLATE NOCASE ASC");
+    	
+    	ArrayList<Integer> evaluationsList = new ArrayList<Integer>(cursor.getCount());
+    	
+    	if(cursor.moveToFirst()) {
+            do {
+            	evaluationsList.add(cursor.getInt(0));
+            } while (cursor.moveToNext());
+        }
+    	cursor.close();
+    	
+    	return evaluationsList;
+	}
+    
+    /**
      * Get the evaluation identify by unique course and evaluation identifies.
      * 
      * @param courseId
@@ -1255,10 +1278,11 @@ public class DBAdapter {
 	 * 
 	 * @param courseId The course identify.
 	 * @param studentId The student identify.
+	 * @param evaluationId The evaluation identify.
 	 * @return
 	 */
 	public ArrayList<ExamStudentMark> getStudentCourseConcepts(int courseId,
-			int studentId) {
+			int studentId, int evaluationId) {
 		String query = "SELECT " +
 			DBHelper.EXAM_STUDENT_MARK_TBL_NAME + "." + DBHelper.ID_FIELD_NAME + ", " + 	// 0
 			DBHelper.EXAM_STUDENT_MARK_TBL_NAME + "." + DBHelper.MARK_FIELD_NAME + ", " +	// 1
@@ -1332,13 +1356,11 @@ public class DBAdapter {
 			
 			" AND " +
 			DBHelper.STUDENT_TBL_NAME + "." + DBHelper.ID_FIELD_NAME + "=" + 
-			String.valueOf(studentId);
-		
-		if(Session.getEvaluationIndex() != null) {
-			query += " AND " +
-				DBHelper.EVALUATION_TBL_NAME + "." + DBHelper.ID_FIELD_NAME + "=" +
-				String.valueOf(Session.getEvaluations().get(Session.getEvaluationIndex()).getId());
-		}
+			String.valueOf(studentId) +
+			
+			" AND " +
+			DBHelper.EVALUATION_TBL_NAME + "." + DBHelper.ID_FIELD_NAME + "=" +
+			String.valueOf(evaluationId);
 		
 		query += " ORDER BY "  + DBHelper.EXAM_TBL_NAME + "." + DBHelper.EXAMDATE_FIELD_NAME + " DESC";
 		
@@ -1418,10 +1440,11 @@ public class DBAdapter {
 	 * 
 	 * @param courseId The course identify.
 	 * @param studentId The student identify.
+	 * @param evaluationId The evaluation identify.
 	 * @return
 	 */
 	public ArrayList<PracticeStudentMark> getStudentCourseProcedures(
-			int courseId, int studentId) {
+			int courseId, int studentId, int evaluationId) {
 		String query = "SELECT " +
 				DBHelper.PRACTICE_STUDENT_MARK_TBL_NAME + "." + DBHelper.ID_FIELD_NAME + ", " + 	// 0
 				DBHelper.PRACTICE_STUDENT_MARK_TBL_NAME + "." + DBHelper.MARK_FIELD_NAME + ", " +	// 1
@@ -1496,15 +1519,13 @@ public class DBAdapter {
 				
 				" AND " +
 				DBHelper.STUDENT_TBL_NAME + "." + DBHelper.ID_FIELD_NAME + "=" + 
-				String.valueOf(studentId);
+				String.valueOf(studentId) +
+				
+				" AND " +
+				DBHelper.EVALUATION_TBL_NAME + "." + DBHelper.ID_FIELD_NAME + "=" +
+				String.valueOf(evaluationId);
 			
-			if(Session.getEvaluationIndex() != null) {
-				query += " AND " +
-					DBHelper.EVALUATION_TBL_NAME + "." + DBHelper.ID_FIELD_NAME + "=" +
-					String.valueOf(Session.getEvaluations().get(Session.getEvaluationIndex()).getId());
-			}
-			
-			query += " ORDER BY "  + DBHelper.PRACTICE_TBL_NAME + "." + DBHelper.START_DATE_2_FIELD_NAME + " DESC";
+			query += " ORDER BY "  + DBHelper.PRACTICE_TBL_NAME + "." + DBHelper.END_DATE_2_FIELD_NAME + " DESC";
 			
 			Cursor cursor = db.rawQuery(query, null);
 	    	
@@ -1583,10 +1604,11 @@ public class DBAdapter {
 	 * 
 	 * @param courseId The course identify.
 	 * @param studentId The student identify.
+	 * @param evaluationId The evaluation identify.
 	 * @return
 	 */
 	public ArrayList<AttitudeStudentMark> getStudentCourseAttitudes(
-			int courseId, int studentId) {
+			int courseId, int studentId, int evaluationId) {
 		String query = "SELECT " +
 				DBHelper.ATTITUDE_STUDENT_MARK_TBL_NAME + "." + DBHelper.ID_FIELD_NAME + ", " + 			// 0
 				DBHelper.ATTITUDE_STUDENT_MARK_TBL_NAME + "." + DBHelper.ATTITUDEDATE_FIELD_NAME + ", " +	// 1
@@ -1658,13 +1680,11 @@ public class DBAdapter {
 				
 				" AND " +
 				DBHelper.STUDENT_TBL_NAME + "." + DBHelper.ID_FIELD_NAME + "=" + 
-				String.valueOf(studentId);
-
-			if(Session.getEvaluationIndex() != null) {
-				query += " AND " +
-					DBHelper.EVALUATION_TBL_NAME + "." + DBHelper.ID_FIELD_NAME + "=" +
-					String.valueOf(Session.getEvaluations().get(Session.getEvaluationIndex()).getId());
-			}
+				String.valueOf(studentId) +
+				
+				" AND " +
+				DBHelper.EVALUATION_TBL_NAME + "." + DBHelper.ID_FIELD_NAME + "=" +
+				String.valueOf(evaluationId);
 			
 			query += " ORDER BY " + DBHelper.ATTITUDE_STUDENT_MARK_TBL_NAME + "." + DBHelper.ATTITUDEDATE_FIELD_NAME + " DESC";
 			

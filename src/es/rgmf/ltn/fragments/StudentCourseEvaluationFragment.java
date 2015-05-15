@@ -17,30 +17,24 @@
 
 package es.rgmf.ltn.fragments;
 
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import es.rgmf.ltn.R;
-import es.rgmf.ltn.model.ReaderModel;
+import es.rgmf.ltn.StudentActivity;
 import es.rgmf.ltn.model.WriterModel;
-import es.rgmf.ltn.model.orm.AttitudeStudentMark;
-import es.rgmf.ltn.model.orm.Course;
-import es.rgmf.ltn.model.orm.ExamStudentMark;
-import es.rgmf.ltn.model.orm.PracticeStudentMark;
 import es.rgmf.ltn.model.orm.Student;
 import es.rgmf.ltn.util.Session;
+import es.rgmf.ltn.util.ui.StudentOptionsContent;
 
 /**
  * This fragment show the information of the Student in a Course in a
@@ -184,6 +178,19 @@ public class StudentCourseEvaluationFragment extends Fragment {
 						ft.commit();
 					}
 				});
+		
+		// Click listener on Info text button.
+		mRootView.findViewById(R.id.student_info_button).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(mContext, StudentActivity.class);
+				intent.putExtra(StudentActivity.STUDENT_ID, mStudent.getId());
+				intent.putExtra(StudentActivity.COURSE_ID, mCourseId);
+				// Select the option to select from StudentActivity Activity.
+				intent.putExtra(StudentActivity.OPTION_ID, StudentOptionsContent.PERSONAL_DATA);
+		    	startActivity(intent);
+			}
+		});
 
 		if (savedInstanceState == null) {
 			// If the user has created evaluations and selects one it configures
@@ -249,10 +256,14 @@ public class StudentCourseEvaluationFragment extends Fragment {
 	}
 	
 	private void loadHomeFragment() {
+		// Hide the button to add marks when we are in home fragment.
+		mRootView.findViewById(R.id.mark_add_button).setVisibility(
+				View.GONE);
+		
 		FragmentManager fragmentManager = getFragmentManager();
 		FragmentTransaction fragmentTransaction = fragmentManager
 				.beginTransaction();
-		PlaceholderFragment fragment = PlaceholderFragment.newInstance(
+		MarksSummaryFragment fragment = MarksSummaryFragment.newInstance(
 				mStudent.getId(), mCourseId);
 		fragmentTransaction.replace(
 				R.id.student_framelayout_detail,
@@ -382,117 +393,5 @@ public class StudentCourseEvaluationFragment extends Fragment {
 						loadAttitudeFragment();
 					}
 				});
-	}
-
-	/**
-	 * A placeholder fragment containing a simple view.
-	 */
-	public static class PlaceholderFragment extends Fragment {
-		private int mStudentId;
-		private int mCourseId;
-
-		/**
-		 * Returns a new instance of this fragment for the given section number.
-		 */
-		public static PlaceholderFragment newInstance(int studentId,
-				int courseId) {
-			PlaceholderFragment fragment = new PlaceholderFragment();
-			fragment.mStudentId = studentId;
-			fragment.mCourseId = courseId;
-			return fragment;
-		}
-
-		/**
-		 * Constructor.
-		 */
-		public PlaceholderFragment() {
-		}
-
-		/**
-		 * Method that is called when this fragment is created.
-		 */
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(
-					R.layout.fragment_student_course_evaluation_home,
-					container, false);
-			// Hide the button to add marks when we are in home fragment.
-			getActivity().findViewById(R.id.mark_add_button).setVisibility(
-					View.GONE);
-
-			// Get marks.
-			ArrayList<ExamStudentMark> exams = ReaderModel
-					.getStudentCourseConcepts(getActivity(), mCourseId,
-							mStudentId);
-			ArrayList<PracticeStudentMark> practices = ReaderModel
-					.getStudentCourseProcedures(getActivity(), mCourseId,
-							mStudentId);
-			ArrayList<AttitudeStudentMark> attitudes = ReaderModel
-					.getStudentCourseAttitudes(getActivity(), mCourseId,
-							mStudentId);
-			Course course = ReaderModel.getCourse(getActivity(),
-					String.valueOf(mCourseId));
-
-			// Calculate the averages of marks.
-			// Concepts.
-			float avgConcepts = 0f;
-			float avgProcedures = 0f;
-			float attitudesMark = 0f;
-			float accMarks = 0f;
-			float accWeights = 0f;
-			for (int i = 0; i < exams.size(); i++) {
-				accMarks += (exams.get(i).getMark() * exams.get(i).getExam()
-						.getTest().getWeight());
-				accWeights += exams.get(i).getExam().getTest().getWeight();
-			}
-			if (accWeights != 0)
-				avgConcepts = (accMarks / accWeights);
-
-			// Procedures.
-			accMarks = 0;
-			accWeights = 0;
-			for (int i = 0; i < practices.size(); i++) {
-				accMarks += (practices.get(i).getMark() * practices.get(i)
-						.getPractice().getTest().getWeight());
-				accWeights += practices.get(i).getPractice().getTest()
-						.getWeight();
-			}
-			if (accWeights != 0)
-				avgProcedures = (accMarks / accWeights);
-
-			// Attitudes.
-			for (int i = 0; i < attitudes.size(); i++) {
-				attitudesMark += (attitudes.get(i).getAttitude().getWeight());
-			}
-
-			// Load information about marks.
-			DecimalFormat df = new DecimalFormat("0.00");
-			float totalMark = 0f;
-			if (course != null) {
-				totalMark = avgConcepts * (course.getConceptWeight() / 100)
-						+ avgProcedures * (course.getProcedureWeight() / 100)
-						+ (10 + attitudesMark)
-						* (course.getAttitudeWeight() / 100);
-			}
-			((TextView) rootView.findViewById(R.id.concepts_average_mark))
-					.setText(String.valueOf(df.format(avgConcepts)));
-			((TextView) rootView.findViewById(R.id.procedures_average_mark))
-					.setText(String.valueOf(df.format(avgProcedures)));
-			((TextView) rootView.findViewById(R.id.attitudes_average_mark))
-					.setText(String.valueOf(df.format(attitudesMark)));
-			((TextView) rootView.findViewById(R.id.total_mark)).setText(String
-					.valueOf(df.format(totalMark)));
-
-			return rootView;
-		}
-
-		/**
-		 * When this fragment is attached.
-		 */
-		@Override
-		public void onAttach(Activity activity) {
-			super.onAttach(activity);
-		}
 	}
 }

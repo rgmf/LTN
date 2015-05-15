@@ -24,6 +24,7 @@ import java.util.Map;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.os.Parcelable;
 import android.text.Html;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -38,7 +39,6 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import es.rgmf.ltn.R;
-import es.rgmf.ltn.util.Dates;
 
 /**
  * This fragment show a Calendar in a TableLayout.
@@ -51,6 +51,8 @@ import es.rgmf.ltn.util.Dates;
  * @author Román Ginés Martínez Ferrández <rgmf@riseup.net>
  */
 public class CalendarView extends TableLayout {
+	private static final String MONTH_NUMBER_STATE = "month_number";
+
 	private Context mContext;
 	private TextView mTextView;
 	private boolean mAnimFlag = false;
@@ -83,8 +85,8 @@ public class CalendarView extends TableLayout {
 	/**
 	 * Map with days of the current month that have custom background color.
 	 * 
-	 * The key is a String in 'yyyy/MM/dd' format.
-	 * The value is a Color (like Color.RED, for instance).
+	 * The key is a String in 'yyyy/MM/dd' format. The value is a Color (like
+	 * Color.RED, for instance).
 	 */
 	private Map<String, Integer> mColorMap = new HashMap<String, Integer>();
 
@@ -108,7 +110,7 @@ public class CalendarView extends TableLayout {
 		super(context);
 		init(context);
 	}
-	
+
 	/**
 	 * Constructor.
 	 * 
@@ -119,7 +121,13 @@ public class CalendarView extends TableLayout {
 		mColorMap = colorMap;
 		init(context);
 	}
-
+	
+	@Override
+	protected Parcelable onSaveInstanceState() {
+		Log.v("halsdfjlasjf", "lasdjflkas");
+		return super.onSaveInstanceState();
+	}
+		
 	/**
 	 * Initialized the calendar.
 	 * 
@@ -184,24 +192,28 @@ public class CalendarView extends TableLayout {
 			if (mTextView != null) {
 				try {
 					if (mIsEvent[mDay]) {
-						mTextView.setBackgroundResource(R.drawable.calendar_day_in_month);
+						mTextView
+								.setBackgroundResource(R.drawable.calendar_day_in_month);
 					} else
-						mTextView.setBackgroundResource(R.drawable.calendar_rectangle_grad);
+						mTextView
+								.setBackgroundResource(R.drawable.calendar_rectangle_grad);
 				} catch (Exception ex) {
-					mTextView.setBackgroundResource(R.drawable.calendar_rectangle_grad);
+					mTextView
+							.setBackgroundResource(R.drawable.calendar_rectangle_grad);
 				}
 				mTextView.setPadding(8, 8, 8, 8);
 			}
 			if (mTextView.getText().toString().trim()
 					.equals(String.valueOf(mToday.get(Calendar.DATE)))) {
-				mTextView.setBackgroundResource(R.drawable.calendar_selected_grad);
+				mTextView
+						.setBackgroundResource(R.drawable.calendar_selected_grad);
 			}
 			mDay = Integer.parseInt(v.getTag().toString());
 			mSelectedDay = mDay;
 			mTextView = (TextView) v;
 			mTextView.setBackgroundResource(R.drawable.calendar_selected_grad);
 			displayMonth(false);
-			
+
 			/*
 			 * save the day,month and year in the public int variables day,month
 			 * and year so that they can be used when the calendar is closed
@@ -307,7 +319,8 @@ public class CalendarView extends TableLayout {
 			mBtn.setLayoutParams(lp);
 			mBtn.setTextColor(getResources().getColor(R.color.black));
 			mBtn.setText(mDays[i]);
-			mBtn.setTextSize(TypedValue.COMPLEX_UNIT_SP, getResources().getDimension(R.dimen.text_size_medium));
+			mBtn.setTextSize(TypedValue.COMPLEX_UNIT_SP, getResources()
+					.getDimension(R.dimen.text_size_medium));
 			mBtn.setGravity(Gravity.CENTER);
 			mRow.addView(mBtn); // add the day label to the tablerow
 		}
@@ -343,7 +356,8 @@ public class CalendarView extends TableLayout {
 				mBtn.setLayoutParams(lp);
 				mBtn.setBackgroundResource(R.drawable.calendar_rectangle_grad);
 				mBtn.setGravity(Gravity.CENTER);
-				mBtn.setTextSize(TypedValue.COMPLEX_UNIT_SP, getResources().getDimension(R.dimen.text_size_medium));
+				mBtn.setTextSize(TypedValue.COMPLEX_UNIT_SP, getResources()
+						.getDimension(R.dimen.text_size_medium));
 				mBtn.setTextColor(Color.GRAY);
 
 				// checks if the first day of the week has arrived or previous
@@ -384,40 +398,39 @@ public class CalendarView extends TableLayout {
 						mBtn.setTextColor(Color.BLACK);
 					} else
 						mBtn.setTextColor(Color.BLACK);
-					
+
 					// if this day is in color map set background specify.
 					strCalendar = CalendarView.getStringFromCalendar(mCalendar);
 					if (mColorMap.containsKey(strCalendar)) {
 						mBtn.setBackgroundColor(mColorMap.get(strCalendar));
 					}
-					
+
 					// set the text of the day.
 					mBtn.setText(Html.fromHtml("<b>" + String.valueOf(day++)
 							+ "</b>"));
-					
+
 					// sunday (red text) or saturday (blue text)?
 					if (mFirstDay == Calendar.SUNDAY) {
 						if (j == 0)
-							mBtn.setTextColor(Color.RED);//parseColor("#D73C10"));
+							mBtn.setTextColor(Color.RED);// parseColor("#D73C10"));
 						else if (j == 6)
-							mBtn.setTextColor(Color.BLUE);//parseColor("#009EF7"));
-					}
-					else {
+							mBtn.setTextColor(Color.BLUE);// parseColor("#009EF7"));
+					} else {
 						if (j == 6)
 							mBtn.setTextColor(Color.RED);
 						else if (j == 5)
 							mBtn.setTextColor(Color.BLUE);
 					}
-					
+
 					// days from other month (gray text color).
 					if ((day == this.mDay + 1)
 							&& (this.mMonth == mCalendar.get(Calendar.MONTH) + 1)
 							&& (this.mYear == mCalendar.get(Calendar.YEAR)))
 						mBtn.setBackgroundColor(Color.GRAY);
 				}
-				
+
 				// maintains proper distance between two adjacent days.
-				mBtn.setPadding(8, 8, 8, 8); 
+				mBtn.setPadding(8, 8, 8, 8);
 				mRow.addView(mBtn);
 			}
 			if (animationEnabled) {
@@ -431,15 +444,16 @@ public class CalendarView extends TableLayout {
 			addView(mRow);
 		}
 	}
-	
+
 	/**
 	 * Return the string from the calendar.
 	 * 
-	 * @param calendar The calendar date.
+	 * @param calendar
+	 *            The calendar date.
 	 * @return the string representing the calendar date.
 	 */
 	public static String getStringFromCalendar(Calendar calendar) {
-		SimpleDateFormat formatter= new SimpleDateFormat("yyyy/MM/dd");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
 		String strDate = formatter.format(calendar.getTime());
 		return strDate;
 	}

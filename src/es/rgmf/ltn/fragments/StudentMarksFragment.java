@@ -33,6 +33,7 @@ import android.widget.ListView;
 import es.rgmf.ltn.R;
 import es.rgmf.ltn.adapters.MarksListAdapter;
 import es.rgmf.ltn.fragments.dialogs.SetMarkDialogFragment;
+import es.rgmf.ltn.util.Session;
 
 /**
  * The Fragment class that to show the sutdent marks enrolled in a course.
@@ -50,6 +51,10 @@ public abstract class StudentMarksFragment extends ListFragment implements
 	 */
 	protected int mCourseId;
 	/**
+	 * The evaluation identifier selected.
+	 */
+	protected int mEvaluationId;
+	/**
 	 * The list view.
 	 */
 	protected ListView mListView;
@@ -66,6 +71,18 @@ public abstract class StudentMarksFragment extends ListFragment implements
 	 * The adapter.
 	 */
 	protected MarksListAdapter mAdapter = null;
+	
+	/**
+	 * Constructor
+	 */
+	public StudentMarksFragment() {
+		if(Session.getEvaluationIndex() != null) {
+			mEvaluationId = Session.getEvaluations().get(Session.getEvaluationIndex()).getId();
+		}
+		else {
+			mEvaluationId = 0;
+		}
+	}
 
 	/**
 	 * This method is called when this fragment is created.

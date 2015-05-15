@@ -95,7 +95,7 @@
         android:text="@string/total_mark_hint"
         android:layout_below="@id/attitudes_average_hint"
         android:layout_alignParentLeft="true"
-        android:paddingTop="50dp" />
+        android:paddingTop="20dp" />
 	<TextView 
 	    android:id="@+id/total_mark"
         android:layout_width="wrap_content"
@@ -104,6 +104,6 @@
         android:layout_below="@id/attitudes_average_hint"
         android:layout_alignParentRight="true"
         android:paddingRight="20dp"
-        android:paddingTop="50dp" />
+        android:paddingTop="20dp" />
 
 </RelativeLayout>

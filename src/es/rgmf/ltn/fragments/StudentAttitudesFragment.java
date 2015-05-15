@@ -85,7 +85,7 @@ public class StudentAttitudesFragment extends StudentMarksFragment {
 	 */
 	@Override
 	protected void setListFragment() {
-		mAttitudesList = ReaderModel.getStudentCourseAttitudes(mContext, mCourseId, mStudentId);
+		mAttitudesList = ReaderModel.getStudentCourseAttitudes(mContext, mCourseId, mStudentId, mEvaluationId);
 		mAdapter = new AttitudeMarksListAdapter(getActivity(), mAttitudesList);
 		setListAdapter(mAdapter);
 	}

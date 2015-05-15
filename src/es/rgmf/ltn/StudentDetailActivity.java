@@ -17,12 +17,11 @@
 
 package es.rgmf.ltn;
 
-import es.rgmf.ltn.fragments.StudentDetailFragment;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Activity;
-
 import android.view.MenuItem;
+import es.rgmf.ltn.fragments.StudentDetailFragment;
 
 /**
  * An activity representing a single Student detail screen. This activity is

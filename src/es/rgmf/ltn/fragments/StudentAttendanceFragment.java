@@ -42,6 +42,9 @@ public class StudentAttendanceFragment extends Fragment {
 	public static final int CALENDAR = 0;
 	public static final int TRIMESTER = 1;
 	
+	private static final String COURSE_ID_STATE = "course_id";
+	private static final String STUDENT_ID_STATE = "student_id";
+
 	/**
 	 * Fragment selected.
 	 */
@@ -70,10 +73,18 @@ public class StudentAttendanceFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		mCourseId = getArguments().getInt(StudentActivity.COURSE_ID);
-		mStudentId = getArguments().getInt(StudentActivity.STUDENT_ID);
-		mAttendanceList = ReaderModel.getAllStudentCourseAttendance(getActivity(), mCourseId, mStudentId);
+
+		if (savedInstanceState == null) {
+			mCourseId = getArguments().getInt(StudentActivity.COURSE_ID);
+			mStudentId = getArguments().getInt(StudentActivity.STUDENT_ID);
+			mAttendanceList = ReaderModel.getAllStudentCourseAttendance(
+					getActivity(), mCourseId, mStudentId);
+		}
+		else {
+			mCourseId = savedInstanceState.getInt(COURSE_ID_STATE);
+			mStudentId = savedInstanceState.getInt(STUDENT_ID_STATE);
+			mAttendanceList= ReaderModel.getAllStudentCourseAttendance(getActivity(), mCourseId, mStudentId);
+		}
 	}
 
 	@Override
@@ -81,45 +92,47 @@ public class StudentAttendanceFragment extends Fragment {
 			Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_student_attendance,
 				container, false);
-		
-		// Load general information about student/course attendance.
-		int noJustify = 0;
-		int justify = 0;
-		int delay = 0;
-		
-		for (Attendance a : mAttendanceList) {
-			switch (a.getEvent().getName()) {
-			case "Falta no justificada":
-				noJustify++;
-				break;
-			case "Falta justificada":
-				justify++;
-				break;
-			case "Retraso":
-				delay++;
-				break;
+
+		if (savedInstanceState == null) {
+			// Load general information about student/course attendance.
+			int noJustify = 0;
+			int justify = 0;
+			int delay = 0;
+
+			for (Attendance a : mAttendanceList) {
+				switch (a.getEvent().getName()) {
+				case "Falta no justificada":
+					noJustify++;
+					break;
+				case "Falta justificada":
+					justify++;
+					break;
+				case "Retraso":
+					delay++;
+					break;
+				}
+
+				TextView tvNotJustify = (TextView) rootView
+						.findViewById(R.id.fsa_student_attendance_not_justify);
+				TextView tvJustify = (TextView) rootView
+						.findViewById(R.id.fsa_student_attendance_justify);
+				TextView tvDelay = (TextView) rootView
+						.findViewById(R.id.fsa_student_attendance_delay);
+
+				tvNotJustify.setText("Faltas no justificadas: " + noJustify);
+				tvJustify.setText("Faltas justificadas: " + justify);
+				tvDelay.setText("Retrasos: " + delay);
 			}
-		}
-		
-		TextView tvNotJustify = (TextView) rootView.findViewById(R.id.fsa_student_attendance_not_justify);
-		TextView tvJustify = (TextView) rootView.findViewById(R.id.fsa_student_attendance_justify);
-		TextView tvDelay = (TextView) rootView.findViewById(R.id.fsa_student_attendance_delay);
-		
-		tvNotJustify.setText("Faltas no justificadas: " + noJustify);
-		tvJustify.setText("Faltas justificadas: " + justify);
-		tvDelay.setText("Retrasos: " + delay);
-		
-		// Load fragment in the fragment layout.
-		if(savedInstanceState == null) {
+
+			// Load fragment in the fragment layout.
 			FragmentManager fragmentManager = getFragmentManager();
 			FragmentTransaction fragmentTransaction = fragmentManager
 					.beginTransaction();
-			switch(mFragmentSelected) {
+			switch (mFragmentSelected) {
 			case CALENDAR:
-				StudentAttendanceCalendarFragment fragment = StudentAttendanceCalendarFragment.newInstance(
-						mCourseId, mStudentId, mAttendanceList);
-				fragmentTransaction.replace(
-						R.id.attendance_framelayout_detail,
+				StudentAttendanceCalendarFragment fragment = StudentAttendanceCalendarFragment
+						.newInstance(mCourseId, mStudentId, mAttendanceList);
+				fragmentTransaction.add(R.id.attendance_framelayout_detail,
 						(Fragment) fragment);
 				break;
 			case TRIMESTER:
@@ -130,12 +143,14 @@ public class StudentAttendanceFragment extends Fragment {
 
 		return rootView;
 	}
-	
+
 	/**
 	 * Save instance state to maintain rotation screen state.
 	 */
 	@Override
 	public void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
+		outState.putInt(COURSE_ID_STATE, mCourseId);
+		outState.putInt(STUDENT_ID_STATE, mStudentId);
 	}
 }

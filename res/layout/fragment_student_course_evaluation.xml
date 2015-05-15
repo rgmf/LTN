@@ -42,6 +42,15 @@
         android:textSize="@dimen/text_size_xxlarge"
         android:layout_toRightOf="@id/student_name_text" />
 	
+	<!-- INFO BUTTON -->
+	<ImageView
+	    android:id="@+id/student_info_button"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:paddingLeft="10dp"
+	    android:src="@drawable/ic_action_about"
+        android:layout_toRightOf="@id/student_lastname_text" />
+	
 	<!-- ID (INVISIBLE) -->
 	<TextView 
 	    android:id="@+id/student_id_text"

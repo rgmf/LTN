@@ -71,7 +71,7 @@ public class StudentConceptsFragment extends StudentMarksFragment {
 	 */
 	@Override
 	protected void setListFragment() {
-		mConceptsList = ReaderModel.getStudentCourseConcepts(mContext, mCourseId, mStudentId);
+		mConceptsList = ReaderModel.getStudentCourseConcepts(mContext, mCourseId, mStudentId, mEvaluationId);
 		mAdapter = new ConceptMarksListAdapter(getActivity(), mConceptsList);
 		setListAdapter(mAdapter);
 	}

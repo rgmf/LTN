@@ -129,6 +129,21 @@ public class ReaderModel {
 		
 		return evaluations;
 	}
+	
+	/**
+	 * This method retrieve all evaluations ids..
+	 * 
+	 * @param cintext The context application.
+	 * @return An array list with all evaluations ids.
+	 */
+	public static ArrayList<Integer> getEvaluationsIds(Context context) {
+		DBAdapter dbAdapter = new DBAdapter(context);
+		dbAdapter.open();
+		ArrayList<Integer> evaluations = dbAdapter.getEvaluationsIds();
+		dbAdapter.close();
+		
+		return evaluations;
+	}
 
 	/**
 	 * This method retrieve all concepts of the student enrolled in the course.
@@ -139,10 +154,10 @@ public class ReaderModel {
 	 * @return
 	 */
 	public static ArrayList<ExamStudentMark> getStudentCourseConcepts(
-			Context context, int courseId, int studentId) {
+			Context context, int courseId, int studentId, int evaluationId) {
 		DBAdapter dbAdapter = new DBAdapter(context);
 		dbAdapter.open();
-		ArrayList<ExamStudentMark> concepts = dbAdapter.getStudentCourseConcepts(courseId, studentId);
+		ArrayList<ExamStudentMark> concepts = dbAdapter.getStudentCourseConcepts(courseId, studentId, evaluationId);
 		dbAdapter.close();
 		
 		return concepts;
@@ -157,10 +172,10 @@ public class ReaderModel {
 	 * @return
 	 */
 	public static ArrayList<PracticeStudentMark> getStudentCourseProcedures(
-			Context context, int courseId, int studentId) {
+			Context context, int courseId, int studentId, int evaluationId) {
 		DBAdapter dbAdapter = new DBAdapter(context);
 		dbAdapter.open();
-		ArrayList<PracticeStudentMark> procedures = dbAdapter.getStudentCourseProcedures(courseId, studentId);
+		ArrayList<PracticeStudentMark> procedures = dbAdapter.getStudentCourseProcedures(courseId, studentId, evaluationId);
 		dbAdapter.close();
 		
 		return procedures;
@@ -175,10 +190,10 @@ public class ReaderModel {
 	 * @return
 	 */
 	public static ArrayList<AttitudeStudentMark> getStudentCourseAttitudes(
-			Context context, int courseId, int studentId) {
+			Context context, int courseId, int studentId, int evaluationId) {
 		DBAdapter dbAdapter = new DBAdapter(context);
 		dbAdapter.open();
-		ArrayList<AttitudeStudentMark> attitudes = dbAdapter.getStudentCourseAttitudes(courseId, studentId);
+		ArrayList<AttitudeStudentMark> attitudes = dbAdapter.getStudentCourseAttitudes(courseId, studentId, evaluationId);
 		dbAdapter.close();
 		
 		return attitudes;
